@@ -9,6 +9,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/user');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var jwt = require('jsonwebtoken');
+var config = require('../../config');
 
 
 var app = require('../../index')
@@ -95,7 +97,13 @@ router.post('/register', (req, res) => {
 
     User.createUser(newUser, function(err, user){
       if(err) throw err;
-      res.send(user).end()
+      //res.send(user).end()
+        // create a token
+        var token = jwt.sign({ id: User._id }, config.secret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
+
+        res.status(200).send({ auth: true, token: token });
     });
   } else {
     res.status(500).send("{errors: \"Passwords don't match\"}").end()
@@ -105,8 +113,15 @@ router.post('/register', (req, res) => {
 router.post('/login', 
     passport.authenticate('local'),
     function(req, res) {
-        res.send(req.user);
+        var token = jwt.sign({ id: User._id }, config.secret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
+        res.status(200).send({ auth: true, token: token });
     }
 );
+
+router.get('/logout', function(req, res) {
+  res.status(200).send({ auth: false, token: null });
+});
 
 module.exports = router;

@@ -44,10 +44,20 @@ export default {
   },
   methods: {
       async login () {
+        try {
           const response = await AuthenticationService.login({
               username: this.username,
               password: this.password
           })
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+          this.$router.push({
+            name: 'posts'
+          })
+        } catch (error) {
+          this.error = error.response.data.error
+          console.log(this.error);
+        }
       }
   },
   mounted () {

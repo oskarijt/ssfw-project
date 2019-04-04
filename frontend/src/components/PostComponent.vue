@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="$store.state.isUserLoggedIn">
     <h1>Latest Posts</h1>
     <!-- CREATE POST HERE -->
     <div class="create-post">

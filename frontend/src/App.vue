@@ -1,22 +1,25 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <v-app>
+      <page-header />
+
+      <main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </main>
+    </v-app>
   </div>
 </template>
 
 
 <script>
-import PostComponent from './components/PostComponent.vue'
-import Register from './components/Register.vue'
-import Login from './components/Login.vue'
-
+import PageHeader from '@/components/Header.vue'
 
 export default {
   name: 'app',
   components: {
-    PostComponent,
-    Register,
-    Login
+    PageHeader
   }
 }
 </script>

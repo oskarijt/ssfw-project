@@ -160,7 +160,7 @@ async function loadPostsCollection() {
   );*/
 
   mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/week1`, { useNewUrlParser: true }).then(() => {
-    console.log('Connected successfully to db.');
+    console.log('Connected successfully to db. (posts)');
     //app.listen(process.env.APP_PORT);
   }, err => {
     console.log('Connection to db failed: ' + err);

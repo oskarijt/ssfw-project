@@ -8,12 +8,15 @@
 <script>
 import PostComponent from './components/PostComponent.vue'
 import Register from './components/Register.vue'
+import Login from './components/Login.vue'
+
 
 export default {
   name: 'app',
   components: {
     PostComponent,
-    Register
+    Register,
+    Login
   }
 }
 </script>

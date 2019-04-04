@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Register</h1>
+    <h1>Login</h1>
 
     <input 
         class="form-control"
@@ -18,17 +18,10 @@
         v-model="password"
         placeholder="password" />
     <br>
-    <input 
-        class="form-control"
-        type="password" 
-        name="password2"
-        v-model="password2"
-        placeholder="password again" />
-    <br>
     <button 
         class="btn btn-primary"
-        @click="register">
-        Register
+        @click="login">
+        Login
         </button>
   </div>
 </template>
@@ -40,8 +33,7 @@ export default {
   data() {
     return {
       username: '',
-      password: '',
-      password2: ''
+      password: ''
       
     }
   },
@@ -51,11 +43,10 @@ export default {
       }
   },
   methods: {
-      async register () {
-          const response = await AuthenticationService.register({
+      async login () {
+          const response = await AuthenticationService.login({
               username: this.username,
-              password: this.password,
-              password2: this.password2
+              password: this.password
           })
       }
   },

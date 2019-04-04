@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <PostComponent msg="This is your primary component"/>
+    <router-view></router-view>
   </div>
 </template>
 
 
 <script>
 import PostComponent from './components/PostComponent.vue'
+import Register from './components/Register.vue'
 
 export default {
   name: 'app',
   components: {
-    PostComponent
+    PostComponent,
+    Register
   }
 }
 </script>

@@ -14,8 +14,12 @@ app.use(cors());                                    //cross origin requests allo
 app.use(express.static(__dirname + '../client'));
 
 const posts = require('./routes/api/posts');
+const auth = require('./routes/api/auth');
+
 
 app.use('/api/posts', posts);
+app.use('/api/auth', auth);
+
 
 const port = process.env.PORT || 3000;
 

@@ -1,6 +1,5 @@
 'use strict'
 
-var mongodb = require('mongodb');     
 var mongoose = require('mongoose');   
 var express = require('express');
 var session = require('express-session');
@@ -37,6 +36,7 @@ const router = express.Router();
 mongoose.connect(`mongodb://localhost:27017/week1`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to db. (auth)');
     //app.listen(process.env.APP_PORT);
+    
   }, err => {
     console.log('Connection to db failed: ' + err);
   });

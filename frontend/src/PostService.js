@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 // url to the posts file
-const url = 'http://localhost:3000/api/posts/';
+const url = 'https://localhost:3000/api/posts/';
 
 class PostService {
 

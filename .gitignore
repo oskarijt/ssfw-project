@@ -1,3 +1,10 @@
 node_modules
+
+#frontend
 frontend/node_modules
 frontend/public/photo-storage/thumbnail
+
+#backend
+server/certrequest.csr
+server/ssl-cert.pem
+server/ssl-key.pem

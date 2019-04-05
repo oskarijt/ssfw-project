@@ -1,6 +1,6 @@
-# client
+# Frontend
 
-## Project setup
+## Client setup
 ```
 npm install
 ```
@@ -10,20 +10,14 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+# Server
+
+## Server setup
 ```
-npm run build
+npm install
 ```
 
-### Run your tests
+### Starts server
 ```
-npm run test
+node index.js
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

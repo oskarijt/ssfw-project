@@ -40,7 +40,7 @@ const multerConfig = {
 
         //Setup where the user's file will go
         destination: (req, file, next) => {
-            next(null, __dirname +  '../../../storage/photo-storage');
+            next(null, __dirname +  '../../../dist/photo-storage');
         },
 
         //Then give the file a unique name

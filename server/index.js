@@ -21,7 +21,7 @@ require('dotenv').config();
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work
 app.use(cors());                                    //cross origin requests allowed
-app.use(express.static(__dirname + '../frontend'));
+app.use(express.static('dist'));
 
 const posts = require('./routes/api/posts');
 const auth = require('./routes/api/auth');

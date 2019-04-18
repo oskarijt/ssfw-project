@@ -1,3 +1,7 @@
 node_modules
 frontend/node_modules
 frontend/public/photo-storage/thumbnail
+
+server/certrequest.csr
+server/ssl-cert.pem
+server/ssl-key.pem

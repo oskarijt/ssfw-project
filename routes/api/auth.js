@@ -33,7 +33,7 @@ app.use(passport.session());
 const router = express.Router();
 
 // Conenct to DB
-mongoose.connect(`mongodb://localhost:27017/week1`, { useNewUrlParser: true }).then(() => {
+mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to db. (auth)');
     //app.listen(process.env.APP_PORT);
     

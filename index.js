@@ -2,16 +2,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
-const https = require('https');
-const fs = require('fs');
-
-const sslkey = fs.readFileSync('ssl-key.pem');
-const sslcert = fs.readFileSync('ssl-cert.pem')
-
-const options = {
-      key: sslkey,
-      cert: sslcert
-};
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 var app = module.exports = express();
 
@@ -30,10 +22,7 @@ const auth = require('./routes/api/auth');
 app.use('/api/posts', posts);
 app.use('/api/auth', auth);
 
+
 const port = process.env.PORT || 3000;
 
-https.createServer(options, app).listen(port, () => console.log(`Server started on port ${port}`));
-
-/*
 app.listen(port, () => console.log(`Server started on port ${port}`));
-*/

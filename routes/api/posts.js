@@ -81,7 +81,7 @@ router.get('/', async (req, res) => {
   const posts = await loadPostsCollection();
   //res.send(await posts.find({}).toArray());
     model.find().then( all => {
-        res.send(all);
+        res.json(all);
     });
 });
 
@@ -147,7 +147,7 @@ router.use('/upload', (req, res) => {
 
   model.create(uploadSchema).then( () => {
       console.log('Upload complete!');
-      res.send('Complete!');
+      res.json({ message: 'Complete!' });
     });
   });
 

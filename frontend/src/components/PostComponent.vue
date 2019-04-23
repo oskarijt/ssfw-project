@@ -6,16 +6,16 @@
 
       <form @submit.prevent="createPost" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="category">
-            Category
-          </label>
-          <input class="form-control" type="text" name="category" v-model="form.category"/>
-        </div>
-        <div class="form-group">
           <label for="title">
             Title
           </label>
           <input class="form-control" type="text" name="title" v-model="form.title"/>
+        </div>
+        <div class="form-group">
+          <label for="category">
+            Category
+          </label>
+          <input class="form-control" type="text" name="category" v-model="form.category"/>
         </div>
         <div class="form-group">
           <label for="description">
@@ -23,14 +23,10 @@
           </label>
           <input class="form-control" type="text" name="description" v-model="form.description"/>
         </div>
-
-        <input type="hidden" id="lat" name="latitude" v-model="form.latitude"/>
-        <input type="hidden" id="lon" name="longitude" v-model="form.longitude"/>
-
         <div class="form-group">
-          <label for="coordinates">Coordinates</label>
-          <!-- <div id="map" style="width: 500px; height: 400px;"></div> -->
+            <star-rating v-model="form.rating"></star-rating>
         </div>
+
         <input 
           type="file" 
           name="photo"
@@ -85,10 +81,7 @@ export default {
         category: '',
         title: '',
         description: '',
-        coordinates: {
-          latitude: '',
-          longitude: '',
-        },
+        rating: 0,
         photo: ''
       }
     }
@@ -119,7 +112,7 @@ export default {
       formData.append('category', this.form.category);
       formData.append('title', this.form.title);
       formData.append('description', this.form.description);
-      formData.append('coordinates', this.form.coordinates)
+      formData.append('rating', this.form.rating);
       formData.append('photo', this.file);
 
       axios.post(url, formData).then(response => {

@@ -25,10 +25,6 @@ app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work
 app.use(cors());                                    //cross origin requests allowed
 app.use(express.static('dist'));
-<<<<<<< HEAD:server/index.js
-=======
-
->>>>>>> development:index.js
 
 const posts = require('./routes/api/posts');
 const auth = require('./routes/api/auth');

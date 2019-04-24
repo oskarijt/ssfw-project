@@ -67,7 +67,13 @@
 import PostService from '../PostService';
 import axios from 'axios';
 
-const API_URL = 'https://localhost:3000/api/posts';
+var API_URL = '';
+// url to the posts file
+if (process.env.NODE_ENV === 'development') {
+    API_URL = 'https://localhost:3000/api/posts/';
+} else {
+    API_URL = 'https://env-1271826.jelastic.metropolia.fi/api/posts';
+}
 
 export default {
   name: 'PostComponent',

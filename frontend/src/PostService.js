@@ -2,8 +2,13 @@
 
 const axios = require('axios');
 
+var url = '';
 // url to the posts file
-const url = 'https://localhost:3000/api/posts/';
+if (process.env.NODE_ENV === 'development') {
+    url = 'https://localhost:3000/api/posts/';
+} else {
+    url = 'https://env-1271826.jelastic.metropolia.fi/api/posts';
+}
 
 class PostService {
 

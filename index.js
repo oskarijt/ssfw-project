@@ -15,6 +15,9 @@ const options = {
 
 var app = module.exports = express();
 
+const env = process.env.NODE_ENV;
+console.log(`Application environment: ${env}`);
+
 require('dotenv').config();
 
 // Middleware

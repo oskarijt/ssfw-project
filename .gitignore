@@ -4,12 +4,7 @@ node_modules
 frontend/node_modules
 frontend/public/photo-storage/thumbnail
 
-<<<<<<< HEAD
-#backend
-server/certrequest.csr
-server/ssl-cert.pem
-server/ssl-key.pem
-=======
+.env
 certrequest.csr
 ssl-cert.pem
 ssl-key.pem

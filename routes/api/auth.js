@@ -33,7 +33,7 @@ app.use(passport.session());
 const router = express.Router();
 
 // Conenct to DB
-mongoose.connect(`mongodb://localhost:27017/week1`, { useNewUrlParser: true }).then(() => {
+mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to db. (auth)');
     //app.listen(process.env.APP_PORT);
     
@@ -103,10 +103,10 @@ router.post('/register', (req, res) => {
           expiresIn: 86400 // expires in 24 hours
         });
 
-        res.status(200).send({ auth: true, token: token });
+        res.status(200).json({ auth: true, token: token });
     });
   } else {
-    res.status(500).send("{errors: \"Passwords don't match\"}").end()
+    res.status(500).json({errors: "Passwords don't match"}).end();
   }
 });
 
@@ -116,12 +116,12 @@ router.post('/login',
         var token = jwt.sign({ id: User._id }, config.secret, {
           expiresIn: 86400 // expires in 24 hours
         });
-        res.status(200).send({ auth: true, token: token });
+        res.status(200).json({ auth: true, token: token });
     }
 );
 
 router.get('/logout', function(req, res) {
-  res.status(200).send({ auth: false, token: null });
+  res.status(200).json({ auth: false, token: null });
 });
 
 module.exports = router;

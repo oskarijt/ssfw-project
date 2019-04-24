@@ -40,7 +40,11 @@ const multerConfig = {
 
         //Setup where the user's file will go
         destination: (req, file, next) => {
+<<<<<<< HEAD:server/routes/api/posts.js
             next(null, __dirname +  '../../../dist/photo-storage');
+=======
+            next(null, 'dist/photo-storage');
+>>>>>>> development:routes/api/posts.js
         },
 
         //Then give the file a unique name
@@ -48,7 +52,7 @@ const multerConfig = {
             console.log('Inside multer ' + file);
             const ext = file.mimetype.split('/')[1];
             next(null, file.fieldname + '-' + Date.now() + '.' + ext);
-        }
+        },
     }),
 
     //A means of ensuring only images are uploaded
@@ -81,7 +85,7 @@ router.get('/', async (req, res) => {
   const posts = await loadPostsCollection();
   //res.send(await posts.find({}).toArray());
     model.find().then( all => {
-        res.send(all);
+        res.json(all);
     });
 });
 
@@ -119,17 +123,24 @@ router.post('/upload',multer(multerConfig).single('photo'), async (req, res, nex
 router.use('/upload', (req, res) => {
   const body = req.body;
   const file = req.file;
+  const inputBuffer = file.path;
 
   const filePath = file.path.split("/").pop();
 
   console.log('Tiedosto');
-  console.log(body);
+  console.log(file);
 
-  sharp(file.path).resize(350,350).toFile(file.destination + '/thumbnail/' + file.filename, (err) => {
+  console.log('Sharp file.path: ' + file.path);
+
+  sharp(req.file.path)
+    .resize(400, 400)
+    .toFile(file.destination + '/thumbnail/' + file.filename, (err, info) => { 
       if (err === !null) {
-          console.log(err);
+        console.log('Sharp error: ' + err);
+      } else {
+        console.log('Sharp should have worked');
       }
-  });
+   });
   
   // construct the schema that gets sent to database
 
@@ -138,7 +149,7 @@ router.use('/upload', (req, res) => {
       title: body.title,
       description: body.description,
       imagePath: '/photo-storage/' + filePath,
-      thumbnailPath: '/photo-storage/thumbnail/' + file.filename,
+      thumbnailPath: '/photo-storage/thumbnail/' + filePath,
       coordinates: {
           latitude: body.latitude,
           longitude: body.longitude
@@ -147,7 +158,7 @@ router.use('/upload', (req, res) => {
 
   model.create(uploadSchema).then( () => {
       console.log('Upload complete!');
-      res.send('Complete!');
+      res.json({ message: 'Complete!' });
     });
   });
 

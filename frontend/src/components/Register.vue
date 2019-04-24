@@ -64,7 +64,6 @@ export default {
             name: 'posts'
           })
         } catch (error) {
-          this.error = error.response.data.error
           console.log(this.error)
         }
       }

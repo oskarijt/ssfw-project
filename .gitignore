@@ -1,0 +1,6 @@
+#server
+.env
+certrequest.csr
+ssl-cert.pem
+ssl-key.pem
+node_modules

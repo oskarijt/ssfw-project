@@ -18,7 +18,6 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`,
         console.log('Connection to db failed: ' + err);
 });
 
-
 // Middleware
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work

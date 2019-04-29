@@ -1,4 +1,3 @@
-#server
 .env
 certrequest.csr
 ssl-cert.pem

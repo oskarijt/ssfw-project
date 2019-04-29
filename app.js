@@ -5,9 +5,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 
-// Conenct to DB
+
+// Connect to DB
 mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, 
     { 
         useNewUrlParser: true 
@@ -23,6 +25,17 @@ app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work
 app.use(cors());                                    //cross origin requests allowed
 app.use(express.static('dist'));
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+const postsRoutes = require('./api/routes/posts');
+const userRoutes = require('./api/routes/user');
+
+app.use('/posts', postsRoutes);
+app.use('/user', userRoutes);
+
 
 app.use((req, res, next) => {
     const error = new Error("Not found");

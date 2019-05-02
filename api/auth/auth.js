@@ -2,8 +2,9 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 module.exports = (req, res, next) => {
+    console.log(req.headers);
     try {
-        const token = req.headers['Authorization'] || req.headers.authorization.split(" ")[1];
+        const token = req.headers.authorization;
                 
         // dont use jwt.decode(), verify() will verify and return decoded value
         const decoded = jwt.verify(token, config.secret);

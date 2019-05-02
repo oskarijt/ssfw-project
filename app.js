@@ -44,4 +44,17 @@ app.use(passport.session());
 app.use('/posts', postsRoutes);
 app.use('/user', userRoutes);
 
+// Add headers
+app.use((req, res, next) => {  
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+    res.setHeader('Access-Control-Allow-Headers', 'Content-type, Accept, X-Access-Token, X-Key, Authorization');
+  
+    res.setHeader('Access-Control-Allow-Credentials', true);
+  
+    next();
+  });
+
 module.exports = app;

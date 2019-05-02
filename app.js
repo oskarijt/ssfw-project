@@ -6,8 +6,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const session = require('express-session');
+const config = require('./config');
+require('./api/auth/passport')(passport);
 
-
+// Routes
+const postsRoutes = require('./api/routes/posts');
+const userRoutes = require('./api/routes/user');
 
 // Connect to DB
 mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, 
@@ -23,33 +28,20 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`,
 // Middleware
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work
-app.use(cors());                                    //cross origin requests allowed
+app.use(cors());
+app.options('*', cors());                                    //cross origin requests allowed
 app.use(express.static('dist'));
+// Express Session
+app.use(session({
+    secret: config.secret,
+    saveUninitialized: true,
+    resave: true
+  }));
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Routes
-const postsRoutes = require('./api/routes/posts');
-const userRoutes = require('./api/routes/user');
-
+// routes
 app.use('/posts', postsRoutes);
 app.use('/user', userRoutes);
-
-
-app.use((req, res, next) => {
-    const error = new Error("Not found");
-    error.status = 404;
-    next(error);
-});
-  
-app.use((error, req, res, next) => {
-    res.status(error.status || 500);
-    res.json({
-        error: {
-        message: error.message
-        }
-    });
-});
 
 module.exports = app;

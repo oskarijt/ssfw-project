@@ -59,8 +59,8 @@ module.exports.userSignup = (req, res) => {
         res.json({ 
                 auth: true,
                 token: token,
-                user: req.user.username,
-                user_id: req.user._id,
+                user: req.body.username,
+                user_id: user._id,
                 message: 'Token for you sir!'
             });
     });

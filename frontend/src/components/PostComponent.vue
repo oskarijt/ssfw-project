@@ -71,7 +71,7 @@ import axios from 'axios';
 // vaihto
 //const API_URL = 'https://localhost:3000/posts/';
 
-const API_URL = 'https://env-1271826.jelastic.metropolia.fi/posts/';
+const API_URL = 'https://reviewer.jelastic.metropolia.fi/posts/';
 
 export default {
   name: 'PostComponent',

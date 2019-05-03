@@ -10,17 +10,6 @@ const session = require('express-session');
 const config = require('./config');
 require('./api/auth/passport')(passport);
 
-// Connect to DB
-mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, 
-    { 
-        useNewUrlParser: true 
-    }
-    ).then(() => {
-        console.log('Connected successfully to db.');
-    }, err => {
-        console.log('Connection to db failed: ' + err);
-});
-
 // Middleware
 app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests

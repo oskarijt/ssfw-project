@@ -26,7 +26,7 @@ export default new Router({
             component: Login
         },
         {
-            path: '/posts/my',
+            path: '/myposts',
             name: 'myposts',
             component: MyPosts
         },

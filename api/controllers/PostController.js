@@ -3,6 +3,14 @@ const sharp = require('sharp');
 const Reviews = require('../models/Post');
 
 
+module.exports.myPosts = (req, res) => {
+    Reviews.find({
+        author: req.user._id
+    }).then( all => {
+        res.json(all);
+    });
+}
+
 module.exports.getPosts = (req,res) => {
     Reviews.find().then( all => {
         res.json(all);
@@ -42,7 +50,10 @@ module.exports.uploadPost = (req, res) => {
 }
 
 module.exports.deletePost = (req,res) => {
-    Reviews.findOneAndDelete({ _id: req.params.id }, (err, res) => {
+    Reviews.findOneAndDelete({ 
+        _id: req.params.id, 
+        author: req.user._id
+     }, (err, res) => {
         if(err) {
         console.log('Delete error: ' + err)
         }

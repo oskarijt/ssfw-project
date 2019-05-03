@@ -6,9 +6,12 @@ const PostController = require('../controllers/PostController');
 
 // Get Posts
 router.get('/', checkAuth, PostController.getPosts);
+
+// Get own Posts
+router.get('/my', checkAuth, PostController.myPosts);
   
 // Delete Post
-router.delete('/:id', PostController.deletePost);
+router.delete('/:id', checkAuth, PostController.deletePost);
   
 // Post Post and handle file
 router.post('/upload', checkAuth, multer(PostController.multerConfig).single('photo'), (req, res, next) => {

@@ -56,6 +56,8 @@
         {{ `${post.title}`}}
         <br>
         {{ `${post.description}`}}
+        <br>
+        {{ `${post.rating}`}}
 
       </div>
     </div>

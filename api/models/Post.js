@@ -6,6 +6,7 @@ const formSchema = mongoose.Schema({
     category: String,
     title: String,
     description: String,
+    rating: String,
     imagePath: String,
     thumbnailPath: String,
 });

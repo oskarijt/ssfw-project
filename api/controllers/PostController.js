@@ -37,6 +37,7 @@ module.exports.uploadPost = (req, res) => {
         category: body.category,
         title: body.title,
         description: body.description,
+        rating: body.rating,
         imagePath: '/photo-storage/' + filePath,
         thumbnailPath: '/photo-storage/thumbnail/' + filePath,
     };

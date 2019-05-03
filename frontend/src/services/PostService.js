@@ -68,7 +68,14 @@ class PostService {
 
     // DELETE
     static deletePost(id) {
-        return axios.delete(`${url}/${id}`);
+        const token = localStorage.getItem('token');
+
+        return axios.delete(`${url}/${id}`,
+        { 
+            'headers': { 
+                'Authorization': token
+            }
+        });
     }
 }
 

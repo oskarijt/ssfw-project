@@ -11,7 +11,7 @@
     </v-toolbar-items>
 
     <v-toolbar-items>
-      <v-btn to="posts" flat dark v-if="$store.state.isUserLoggedIn">
+      <v-btn to="myposts" flat dark v-if="$store.state.isUserLoggedIn">
         My Reviews
       </v-btn>
     </v-toolbar-items>

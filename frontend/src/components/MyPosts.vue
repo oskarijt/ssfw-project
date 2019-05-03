@@ -53,7 +53,7 @@ export default {
   async created() {
 
     try {
-      this.posts = await PostService.getPosts();
+      this.posts = await PostService.myPosts();
     } catch(err) {
       this.error = err.message;
     }
@@ -65,7 +65,7 @@ export default {
       await PostService.deletePost(id);
 
       try {
-        this.posts = await PostService.getPosts();
+        this.posts = await PostService.myPosts();
       } catch(err) {
         this.error = err.message;
       }

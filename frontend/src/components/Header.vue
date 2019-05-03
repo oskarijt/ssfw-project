@@ -6,7 +6,13 @@
 
     <v-toolbar-items>
       <v-btn to="posts" flat dark>
-        Posts
+        Reviews
+      </v-btn>
+    </v-toolbar-items>
+
+    <v-toolbar-items>
+      <v-btn to="posts" flat dark v-if="!$store.state.isUserLoggedIn">
+        My Reviews
       </v-btn>
     </v-toolbar-items>
 

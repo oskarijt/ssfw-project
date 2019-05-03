@@ -129,8 +129,11 @@ export default {
 
       axios.post(url, formData).then(response => {
         console.log(response);
-        this.posts = PostService.getPosts();
-
+        try {
+          this.posts = PostService.getPosts();
+        } catch(err) {
+          this.error = err.message;
+        }
       })
       .catch(error => {
         alert(error);

@@ -35,6 +35,30 @@ class PostService {
         })
     }
 
+    // GET
+    static myPosts() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const token = localStorage.getItem('token');
+                const res = await axios.get(url + '/my', 
+                    { 
+                        'headers': { 
+                            'Authorization': token
+                        }
+                    });
+                const data = res.data;
+
+                resolve(
+                    data.map(post => ({
+                        ...post
+                    }))
+                );
+            } catch(err) {
+                reject(err);
+            }
+        })
+    }
+
     // CREATE
     static insertPost(form) {
         return axios.post(url + '/upload', {

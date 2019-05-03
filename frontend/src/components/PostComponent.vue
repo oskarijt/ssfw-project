@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="$store.state.isUserLoggedIn">
-    <h1>Latest Posts</h1>
+    <h1>Post a Review</h1>
     <!-- CREATE POST HERE -->
     <div class="create-post">
 
@@ -40,6 +40,7 @@
 
     </div>
     <hr>
+    <h1>Latest Reviews</h1>
     <p class="error" v-if="error">{{ error }} </p>
     <div class="posts-container">
       <div class="post"
@@ -47,17 +48,16 @@
         v-bind:item="post"
         v-bind:index="index"
         v-bind:key="post._id"
-        v-on:dblclick="deletePost(post._id)"
       >
         <!-- {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}} -->
         <p class="text">{{ post.category }}</p>
         <img class="img-responsive" v-bind:src="post.thumbnailPath"/>
         <br>
-        {{ `${post.title}`}}
+        Title: {{ `${post.title}`}}
         <br>
-        {{ `${post.description}`}}
+        Description: {{ `${post.description}`}}
         <br>
-        {{ `${post.rating}`}}
+        Rating: {{ `${post.rating}`}}
 
       </div>
     </div>
@@ -138,16 +138,6 @@ export default {
       .catch(error => {
         alert(error);
       });
-    },
-
-    async deletePost(id) {
-      await PostService.deletePost(id);
-
-      try {
-        this.posts = await PostService.getPosts();
-      } catch(err) {
-        this.error = err.message;
-      }
     }
   }
 }

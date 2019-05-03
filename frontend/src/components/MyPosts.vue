@@ -1,6 +1,7 @@
 <template>
   <div class="container" v-if="$store.state.isUserLoggedIn">
     <h1>My Reviews</h1>
+    Double click a review to delete it.
     <hr>
     <p class="error" v-if="error">{{ error }} </p>
     <div class="posts-container">
@@ -15,11 +16,11 @@
         <p class="text">{{ post.category }}</p>
         <img class="img-responsive" v-bind:src="post.thumbnailPath"/>
         <br>
-        {{ `${post.title}`}}
+        Title: {{ `${post.title}`}}
         <br>
-        {{ `${post.description}`}}
+        Description: {{ `${post.description}`}}
         <br>
-        {{ `${post.rating}`}}
+        Rating: {{ `${post.rating}`}}
 
       </div>
     </div>

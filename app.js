@@ -10,10 +10,6 @@ const session = require('express-session');
 const config = require('./config');
 require('./api/auth/passport')(passport);
 
-// Routes
-const postsRoutes = require('./api/routes/posts');
-const userRoutes = require('./api/routes/user');
-
 // Connect to DB
 mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, 
     { 
@@ -26,21 +22,25 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`,
 });
 
 // Middleware
+app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
 app.use(bodyParser.json());                         //makes JSON work
 app.use(cors());
 app.options('*', cors());                                    //cross origin requests allowed
-app.use(express.static('dist'));
 // Express Session
 app.use(session({
     secret: config.secret,
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false,
+    cookie: { secure: false }
   }));
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
 // routes
+// Routes
+const postsRoutes = require('./api/routes/posts');
+const userRoutes = require('./api/routes/user');
 app.use('/posts', postsRoutes);
 app.use('/user', userRoutes);
 

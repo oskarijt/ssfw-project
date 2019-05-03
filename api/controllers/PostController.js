@@ -2,22 +2,22 @@ const multer = require('multer');       // file storing middleware
 const sharp = require('sharp');
 const Reviews = require('../models/Post');
 
-
 module.exports.myPosts = (req, res) => {
     Reviews.find({
-        author: req.user._id
+        author: req.userData.id
     }).then( all => {
         res.json(all);
     });
 }
 
-module.exports.getPosts = (req,res) => {
+module.exports.getPosts = (req, res) => {
     Reviews.find().then( all => {
         res.json(all);
     });
 }
 
 module.exports.uploadPost = (req, res) => {
+
     const body = req.body;
     const file = req.file;
     const inputBuffer = file.path;
@@ -28,19 +28,17 @@ module.exports.uploadPost = (req, res) => {
       .toFile(file.destination + '/thumbnail/' + file.filename, (err, info) => { 
         if (err === !null) {
           console.log('Sharp error: ' + err);
-        } else {
-          console.log('Sharp should have worked');
         }
      });
     
     // construct the schema that gets sent to database
     const uploadSchema = {
+        author: body.author,
         category: body.category,
         title: body.title,
         description: body.description,
         imagePath: '/photo-storage/' + filePath,
         thumbnailPath: '/photo-storage/thumbnail/' + filePath,
-        author: req.user._id
     };
     
     Reviews.create(uploadSchema).then( () => {
@@ -50,12 +48,15 @@ module.exports.uploadPost = (req, res) => {
 }
 
 module.exports.deletePost = (req,res) => {
+
     Reviews.findOneAndDelete({ 
         _id: req.params.id, 
-        author: req.user._id
-     }, (err, res) => {
+        author: req.userData.id
+     }, (err) => {
         if(err) {
         console.log('Delete error: ' + err)
+        } else {
+            res.json({ message: 'Review deleted!' });
         }
     });
 }

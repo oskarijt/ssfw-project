@@ -51,8 +51,10 @@ export default {
           })
           const token = response.data.token
           const user = response.data.user
+          const user_id = response.data.user_id
 
           localStorage.setItem('token', token)
+          localStorage.setItem('user_id', user_id)
 
           this.$store.dispatch('setToken', token)
           this.$store.dispatch('setUser', user)

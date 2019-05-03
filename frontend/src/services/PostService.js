@@ -5,9 +5,9 @@ const axios = require('axios');
 
 // url to the posts file
 // vaihto
-const url = 'https://localhost:3000/posts/';
+//const url = 'https://localhost:3000/posts/';
 
-//const url = 'https://env-1271826.jelastic.metropolia.fi/api/posts/';
+const url = 'https://env-1271826.jelastic.metropolia.fi/posts/';
 
 class PostService {
 

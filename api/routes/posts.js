@@ -14,7 +14,7 @@ router.get('/my', checkAuth, PostController.myPosts);
 router.delete('/:id', checkAuth, PostController.deletePost);
   
 // Post Post and handle file
-router.post('/upload', checkAuth, multer(PostController.multerConfig).single('photo'), (req, res, next) => {
+router.post('/upload', multer(PostController.multerConfig).single('photo'), (req, res, next) => {
     next();
 });
   

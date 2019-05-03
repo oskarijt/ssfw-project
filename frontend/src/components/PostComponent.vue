@@ -69,9 +69,9 @@ import axios from 'axios';
 
 // url to the posts file
 // vaihto
-const API_URL = 'https://localhost:3000/posts/';
+//const API_URL = 'https://localhost:3000/posts/';
 
-//const API_URL = 'https://env-1271826.jelastic.metropolia.fi/api/posts';
+const API_URL = 'https://env-1271826.jelastic.metropolia.fi/posts/';
 
 export default {
   name: 'PostComponent',
@@ -82,12 +82,12 @@ export default {
       posts: [],
       error: '',
       form: {
+        author: '',
         category: '',
         title: '',
         description: '',
         rating: 0,
         photo: '',
-        author: '',
       }
     }
   },
@@ -114,13 +114,18 @@ export default {
 
       const formData = new FormData();
 
+      const user_id = localStorage.getItem('user_id').toString();
+
+      console.log(user_id);
+
+      formData.append('author', user_id);
       formData.append('category', this.form.category);
       formData.append('title', this.form.title);
       formData.append('description', this.form.description);
       formData.append('rating', this.form.rating);
       formData.append('photo', this.file);
 
-      axios.post(url, formData, token).then(response => {
+      axios.post(url, formData).then(response => {
         console.log(response);
         this.posts = PostService.getPosts();
 
@@ -134,7 +139,7 @@ export default {
       await PostService.deletePost(id);
 
       try {
-        this.posts = await PostService.getPosts(token);
+        this.posts = await PostService.getPosts();
       } catch(err) {
         this.error = err.message;
       }

@@ -6,7 +6,7 @@ const config = require('../../config');
 
 const User = module.exports = require("../models/User");
 
-module.exports.createUser = (newUser, callback) => {
+const createUser = (newUser, callback) => {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
         newUser.password = hash;
@@ -60,6 +60,7 @@ module.exports.userSignup = (req, res) => {
                 auth: true,
                 token: token,
                 user: req.user.username,
+                user_id: req.user._id,
                 message: 'Token for you sir!'
             });
     });
@@ -83,6 +84,7 @@ module.exports.userLogin = (req, res) => {
         auth: true,
         token: token,
         user: req.user.username,
+        user_id: req.user._id,
         message: 'Token for you sir!'
     });
 }

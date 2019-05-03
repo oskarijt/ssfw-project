@@ -4,16 +4,6 @@ const User = require('../controllers/UserController');
 
 module.exports = (passport) => {
 
-    passport.serializeUser((user, done) => {
-        done(null, user.id);
-    });
-    
-    passport.deserializeUser((id, done) => {
-        User.getUserById(id, (err, user) => {
-            done(err, user);
-        });
-    });
-
     passport.use(new LocalStrategy(
     (username, password, done) => {
         User.getUserByUsername(username, (err, user) => {
@@ -31,4 +21,14 @@ module.exports = (passport) => {
             });
         });
     }));
+
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
+    });
+    
+    passport.deserializeUser((id, done) => {
+        User.getUserById(id, (err, user) => {
+            done(err, user);
+        });
+    });
 }

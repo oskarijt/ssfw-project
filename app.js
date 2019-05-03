@@ -11,7 +11,9 @@ const config = require('./config');
 require('./api/auth/passport')(passport);
 
 // Connect to DB
-mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/week1`, 
+const localdb = `mongodb://${process.env.DB_HOST}:27017/week1`;
+const serverdb = `mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/week1`
+mongoose.connect(serverdb, 
     { 
         useNewUrlParser: true 
     }

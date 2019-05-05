@@ -23,20 +23,27 @@ This application is built with Vue.js on the client, Express on the backend and 
 
 ###### Functionality and structure
 
-The file server.js starts the whole application. In app.js we initialize middleware and provide the frontend from dist/ folder. 
-frontend/ contains all files used to develop the frontend. When building frontend to production it creates dist/ which app.js is providing as a frontend. 
+- server.js starts the whole application. In app.js we initialize middleware and provide the frontend from dist/ folder. 
 
-app.js uses api/ folder for all other backend functionalities. The structure inside api/ is following the 'mvc' structure without the 'v'.
+- frontend/ contains all files used to develop the frontend. When building frontend to production it creates dist/ which app.js is providing as a frontend. 
 
-api/auth/ contains passport stuff and something to recognize the user when he/she is accessing routes in api/routes/ (to protect certain routes).
+- app.js
+Uses api/ folder for all other backend functionalities. The structure inside api/ is following the 'mvc' structure without the 'v'.
 
-api/controllers/ is a level which acts like a brain for the entire system. It has all the functionalities that the user is trying to use via api/routes/
+- api/auth/
+Contains passport stuff and something to recognize the user when he/she is accessing routes in api/routes/ (to protect certain routes).
 
-api/models/ defines where the application's data objets are stored. It doesn't know anything about routes or controllers.
+- api/controllers/
+Is a level which acts like a brain for the entire system. It has all the functionalities that the user is trying to use via api/routes/
 
-api/routes/ contains the endpoints which the user is accessing via the frontend of the application.
+- api/models/
+Defines where the application's data objets are stored. It doesn't know anything about routes or controllers.
 
-The last folder that we haven't talked about is the doc/ which contains the [API documentation](https://users.metropolia.fi/~oskarijt/doc/) of this project. 
+- api/routes/
+Contains the endpoints which the user is accessing via the frontend of the application.
+
+- doc/ 
+Contains the [API documentation](https://users.metropolia.fi/~oskarijt/doc/) of this project. 
 
 
 ## Author

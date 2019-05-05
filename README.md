@@ -10,7 +10,7 @@ This application is built with Vue.js on the client, Express on the backend and 
 
 ## Structure
 
-###### Folders
+##### Folders
 
 - api/
     - auth/
@@ -21,7 +21,7 @@ This application is built with Vue.js on the client, Express on the backend and 
 - doc/
 - frontend/
 
-###### Functionality and structure
+##### Functionality and structure
 
 - server.js starts the whole application. In app.js we initialize middleware and provide the frontend from dist/ folder. 
 

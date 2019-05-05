@@ -26,9 +26,9 @@ mongoose.connect(serverdb,
 // Middleware
 app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended:true}));   //handle body requests
-app.use(bodyParser.json());                         //makes JSON work
+app.use(bodyParser.json());                        //makes JSON work
 app.use(cors());
-app.options('*', cors());                                    //cross origin requests allowed
+app.options('*', cors());                          //cross origin requests allowed
 // Express Session
 app.use(session({
     secret: config.secret,

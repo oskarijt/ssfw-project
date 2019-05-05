@@ -1,0 +1,495 @@
+[
+  {
+    "type": "delete",
+    "url": "/posts/:id",
+    "title": "Delete post",
+    "group": "Posts",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  message: \"Review deleted!\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Delete error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        },
+        {
+          "title": "Not authenticated error",
+          "content": "HTTP/1.1 401 Unauthorized\n  [{\n    message: \"Auth failed\"\n  }]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/posts.js",
+    "groupTitle": "Posts",
+    "name": "DeletePostsId"
+  },
+  {
+    "type": "get",
+    "url": "/posts/",
+    "title": "List all posts",
+    "group": "Posts",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "posts",
+            "description": "<p>Post's list</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "author",
+            "optional": false,
+            "field": "posts.author",
+            "description": "<p>Post author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "category",
+            "optional": false,
+            "field": "posts.category",
+            "description": "<p>Post category</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "description",
+            "optional": false,
+            "field": "posts.description",
+            "description": "<p>Post description</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "imagePath",
+            "optional": false,
+            "field": "posts.imagePath",
+            "description": "<p>Post imagePath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "rating",
+            "optional": false,
+            "field": "posts.rating",
+            "description": "<p>Post rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "thumbnailPath",
+            "optional": false,
+            "field": "posts.thumbnailPath",
+            "description": "<p>Post thumbnailPath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "title",
+            "optional": false,
+            "field": "posts.title",
+            "description": "<p>Post title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "_id",
+            "optional": false,
+            "field": "posts._id",
+            "description": "<p>Post _id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  author: \"5ccc92372e30895a7fc72bad\"\n  category: \"Animal\"\n  description: \"This camel ride was bumpy as hell!!\"\n  imagePath: \"/photo-storage/photo-1556911417719.jpeg\"\n  rating: \"3\"\n  thumbnailPath: \"/photo-storage/thumbnail/photo-1556911417719.jpeg\"\n  title: \"Camel Ride\"\n  _id: \"5ccc9539e846d25711366165\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        },
+        {
+          "title": "Not authenticated error",
+          "content": "HTTP/1.1 401 E\n  [{\n    message: \"Auth failed\"\n  }]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/posts.js",
+    "groupTitle": "Posts",
+    "name": "GetPosts"
+  },
+  {
+    "type": "get",
+    "url": "/posts/my",
+    "title": "List user posts",
+    "group": "Posts",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "posts",
+            "description": "<p>Post's list</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "author",
+            "optional": false,
+            "field": "posts.author",
+            "description": "<p>Post author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "category",
+            "optional": false,
+            "field": "posts.category",
+            "description": "<p>Post category</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "description",
+            "optional": false,
+            "field": "posts.description",
+            "description": "<p>Post description</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "imagePath",
+            "optional": false,
+            "field": "posts.imagePath",
+            "description": "<p>Post imagePath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "rating",
+            "optional": false,
+            "field": "posts.rating",
+            "description": "<p>Post rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "thumbnailPath",
+            "optional": false,
+            "field": "posts.thumbnailPath",
+            "description": "<p>Post thumbnailPath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "title",
+            "optional": false,
+            "field": "posts.title",
+            "description": "<p>Post title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "_id",
+            "optional": false,
+            "field": "posts._id",
+            "description": "<p>Post _id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  author: \"5ccc92372e30895a7fc72bad\"\n  category: \"Animal\"\n  description: \"This camel ride was bumpy as hell!!\"\n  imagePath: \"/photo-storage/photo-1556911417719.jpeg\"\n  rating: \"3\"\n  thumbnailPath: \"/photo-storage/thumbnail/photo-1556911417719.jpeg\"\n  title: \"Camel Ride\"\n  _id: \"5ccc9539e846d25711366165\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        },
+        {
+          "title": "Not authenticated error",
+          "content": "HTTP/1.1 401 Unauthorized\n  [{\n    message: \"Auth failed\"\n  }]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/posts.js",
+    "groupTitle": "Posts",
+    "name": "GetPostsMy"
+  },
+  {
+    "type": "post",
+    "url": "/posts/upload",
+    "title": "Upload a new review",
+    "group": "Posts",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "author",
+            "optional": false,
+            "field": "posts.author",
+            "description": "<p>Post author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "category",
+            "optional": false,
+            "field": "posts.category",
+            "description": "<p>Post category</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "description",
+            "optional": false,
+            "field": "posts.description",
+            "description": "<p>Post description</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "imagePath",
+            "optional": false,
+            "field": "posts.imagePath",
+            "description": "<p>Post imagePath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "rating",
+            "optional": false,
+            "field": "posts.rating",
+            "description": "<p>Post rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "thumbnailPath",
+            "optional": false,
+            "field": "posts.thumbnailPath",
+            "description": "<p>Post thumbnailPath</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "title",
+            "optional": false,
+            "field": "posts.title",
+            "description": "<p>Post title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "_id",
+            "optional": false,
+            "field": "posts._id",
+            "description": "<p>Post _id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "photo",
+            "optional": false,
+            "field": "posts.photo",
+            "description": "<p>Post photo (req.file)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  message: \"Upload Complete!\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/posts.js",
+    "groupTitle": "Posts",
+    "name": "PostPostsUpload"
+  },
+  {
+    "type": "get",
+    "url": "/user/logout",
+    "title": "User logout",
+    "group": "User",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  auth: null\n  token: null\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/user.js",
+    "groupTitle": "User",
+    "name": "GetUserLogout"
+  },
+  {
+    "type": "post",
+    "url": "/user/login",
+    "title": "User login",
+    "group": "User",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "username",
+            "optional": false,
+            "field": "user.username",
+            "description": "<p>User username</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "password",
+            "optional": false,
+            "field": "user.password",
+            "description": "<p>User password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  auth: true\n  message: \"Token for you sir!\"\n  token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibW9yamVudHRlcyIsImlkIjoiNWNjZjA2Njg3OTljY2IwNmU1YTM5MWQ4IiwiaWF0IjoxNTU3MDcxNDY0LCJleHAiOjE1NTcxNTc4NjR9.Gf9mXOGLJONxoKjw3RnA8aOKNc8ktP0tkDqmrTUpw_E\"\n  user: \"morjenttes\"\n  user_id: \"5ccf0668799ccb06e5a391d8\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        },
+        {
+          "title": "Bad Request",
+          "content": "HTTP/1.1 401 Unauthorized",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostUserLogin"
+  },
+  {
+    "type": "post",
+    "url": "/user/register",
+    "title": "Register new user",
+    "group": "User",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "username",
+            "optional": false,
+            "field": "user.username",
+            "description": "<p>User username</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "password",
+            "optional": false,
+            "field": "user.password",
+            "description": "<p>User password</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "password2",
+            "optional": false,
+            "field": "user.password2",
+            "description": "<p>User password2</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK\n[{\n  auth: true\n  message: \"Token for you sir!\"\n  token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibW9yamVudHRlcyIsImlkIjoiNWNjZjA2Njg3OTljY2IwNmU1YTM5MWQ4IiwiaWF0IjoxNTU3MDcxNDY0LCJleHAiOjE1NTcxNTc4NjR9.Gf9mXOGLJONxoKjw3RnA8aOKNc8ktP0tkDqmrTUpw_E\"\n  user: \"morjenttes\"\n  user_id: \"5ccf0668799ccb06e5a391d8\"\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "HTTP/1.1 500 Internal Server Error",
+          "type": "json"
+        },
+        {
+          "title": "Bad Request",
+          "content": "HTTP/1.1 401 E\n  [{\n    message: \"Passwords don't match\"\n  }]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostUserRegister"
+  },
+  {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "./doc/main.js",
+    "group": "_home_zerosku_Documents_school_project_doc_main_js",
+    "groupTitle": "_home_zerosku_Documents_school_project_doc_main_js",
+    "name": ""
+  }
+]

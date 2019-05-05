@@ -65,7 +65,7 @@ module.exports.userSignup = (req, res) => {
             });
     });
   } else {
-    res.json({errors: "Passwords don't match"}).end();
+    res.status(400).json({message: "Passwords don't match"}).end();
   }
 }
 

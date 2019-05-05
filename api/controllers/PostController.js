@@ -44,7 +44,7 @@ module.exports.uploadPost = (req, res) => {
     
     Reviews.create(uploadSchema).then( () => {
         console.log('Upload complete!');
-        res.json({ message: 'Uppload complete!' });
+        res.json({ message: 'Upload complete!' });
     });
 }
 
